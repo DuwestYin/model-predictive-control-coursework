@@ -31,7 +31,7 @@ for i = 3:length(u);
     yk(i) = Yk(1);
     Yk_1 = Yk;
 end
-figure, plot(t,yk,'r'); hold on;
+figure, plot(t,yk,'r.-'); hold on;
 [yy,t] = lsim(sys,u,t);
 plot(t,yy,'b--');plot(t,u,'k');
 
@@ -45,4 +45,5 @@ for L = N+1:length(u)
     temp(2) = sum(temp);
     y1k(L) = temp(2) + S(N)*u(k+L-N);
 end
-plot(t,y1k,'y')
+plot(t,y1k,'b-.')
+legend( '状态空间模型输出', '实际输出','输入信号', '卷积模型输出');

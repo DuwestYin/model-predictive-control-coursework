@@ -4,6 +4,7 @@ den = [1, 6, 10, 8];
 sys = tf(num,den);
 t1 = 0:0.01:6;
 [y, t1] = step(sys,t1);
+figure, step(sys,t1);
 figure,plot(t1,y);
 n = length(t1);
 n1 = abs(y-y(n))/y(n) > 0.05;
@@ -29,6 +30,7 @@ for i = 3:length(u);
     yk(i) = Yk(1);
     Yk_1 = Yk;
 end
-figure, plot(t,yk,'r'); hold on;
+figure, plot(t,yk,'r.-'); hold on;
 [yy,t] = lsim(sys,u,t);
 plot(t,yy,'b--');plot(t,u,'k');
+legend( '模型输出', '实际输出','输入信号');
